@@ -1,0 +1,404 @@
+# depslib dependency file v1.0
+1571228346 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\graph.cpp
+	<FL/Fl_GIF_Image.H>
+	<FL/Fl_JPEG_Image.H>
+	"Graph.h"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_gif_image.h
+	"Fl_Pixmap.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_pixmap.h
+	"Fl_Image.H"
+	"x.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_image.h
+	"Enumerations.H"
+	<stdlib.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\enumerations.h
+	<FL/abi-version.h>
+	"Fl_Export.H"
+	"fl_types.h"
+
+1571587180 f:\fltk\fltk-1.3.5-sdk\include\fl\abi-version.h
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_export.h
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_types.h
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\x.h
+	"Enumerations.H"
+	"win32.H"
+	"mac.H"
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	"Fl_Window.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\win32.h
+	<windows.h>
+	<FL/Fl_Window.H>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_window.h
+	<windows.h>
+	"Fl_Group.H"
+	"Fl_Bitmap.H"
+	<stdlib.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_group.h
+	"Fl_Widget.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_widget.h
+	"Enumerations.H"
+	<stdint.h>
+	<stddef.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_bitmap.h
+	"Fl_Image.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\mac.h
+	<FL/Fl_Widget.H>
+	<ApplicationServices/ApplicationServices.h>
+	"Fl_Window.H"
+	"../src/Fl_Font.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_jpeg_image.h
+	"Fl_Image.H"
+
+1233317660 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\graph.h
+	<FL/fl_draw.H>
+	<FL/Fl_Image.H>
+	"Point.h"
+	"std_lib_facilities.h"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_draw.h
+	<FL/x.H>
+	<FL/Enumerations.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Device.H>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_device.h
+	<FL/x.H>
+	<FL/Fl_Plugin.H>
+	<FL/Fl_Image.H>
+	<FL/Fl_Bitmap.H>
+	<FL/Fl_Pixmap.H>
+	<FL/Fl_RGB_Image.H>
+	<stdlib.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_plugin.h
+	"Fl_Preferences.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_preferences.h
+	<stdio.h>
+	"Fl_Export.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_rgb_image.h
+	"Fl_Image.H"
+
+1233317660 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\point.h
+
+1233317660 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\std_lib_facilities.h
+	<cmath>
+	<cstring>
+	<fstream>
+	<stdexcept>
+	<string>
+	<sstream>
+	<vector>
+
+1233317660 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\gui.cpp
+	<FL/Fl.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Output.H>
+	"GUI.h"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl.h
+	<FL/Fl_Export.H>
+	<FL/Fl_Cairo.H>
+	"fl_utf8.h"
+	"Enumerations.H"
+	<stdio.h>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_cairo.h
+	<FL/Fl_Export.H>
+	<cairo.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_utf8.h
+	"Fl_Export.H"
+	"fl_types.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<locale.h>
+	<ctype.h>
+	<wchar.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<X11/Xlocale.h>
+	<X11/Xlib.h>
+	<locale.h>
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_button.h
+	"Fl_Widget.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_output.h
+	"Fl_Input.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_input.h
+	"Fl_Input_.H"
+
+1551602424 f:\fltk\fltk-1.3.5-sdk\include\fl\fl_input_.h
+	"Fl_Widget.H"
+
+1233317660 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\gui.h
+	"Window.h"
+	"Graph.h"
+
+1233317660 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\window.h
+	<string>
+	<vector>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	"Point.h"
+
+1571023904 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\simple_window.cpp
+	"Simple_window.h"
+
+1571023852 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\simple_window.h
+	"GUI.h"
+	"Graph.h"
+
+1571663035 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\trianglebinary_tree.cpp
+	"TriangleBinary_tree.h"
+
+1233317660 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\window.cpp
+	"Window.h"
+	"Graph.h"
+	"GUI.h"
+
+1571658877 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\main.cpp
+	"Simple_window.h"
+	"Graph.h"
+	"Binary_tree.h"
+	"TriangleBinary_tree.h"
+	"std_lib_facilities.h"
+	<iostream>
+
+1571662981 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\binary_tree.h
+	"Graph.h"
+	<assert.h>
+	<math.h>
+
+1571663003 g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\trianglebinary_tree.h
+	"Binary_tree.h"
+
+1571663050 source:g:\galaxieswork\cs241-coursedata\weekly-homework\week07\hw3\binary_tree.cpp
+	"Binary_tree.h"
+
+1604418774 source:e:\c++\problem solving and practice\week9\hw3\binary_tree.cpp
+	"Binary_tree.h"
+
+1604418784 e:\c++\problem solving and practice\week9\hw3\binary_tree.h
+	"std_lib_facilities.h"
+	"Graph.h"
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\graph.h
+	<FL/fl_draw.H>
+	<FL/Fl_Image.H>
+	"Point.h"
+	"std_lib_facilities.h"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_draw.h
+	<FL/x.H>
+	<FL/Enumerations.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Device.H>
+
+1551602423 e:\c++\fltk\mingw\include\fl\x.h
+	"Enumerations.H"
+	"win32.H"
+	"mac.H"
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	"Fl_Window.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\enumerations.h
+	<FL/abi-version.h>
+	"Fl_Export.H"
+	"fl_types.h"
+
+1604404555 e:\c++\fltk\mingw\include\fl\abi-version.h
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_export.h
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_types.h
+
+1551602423 e:\c++\fltk\mingw\include\fl\win32.h
+	<windows.h>
+	<FL/Fl_Window.H>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_window.h
+	<windows.h>
+	"Fl_Group.H"
+	"Fl_Bitmap.H"
+	<stdlib.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_group.h
+	"Fl_Widget.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_widget.h
+	"Enumerations.H"
+	<stdint.h>
+	<stddef.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_bitmap.h
+	"Fl_Image.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_image.h
+	"Enumerations.H"
+	<stdlib.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\mac.h
+	<FL/Fl_Widget.H>
+	<ApplicationServices/ApplicationServices.h>
+	"Fl_Window.H"
+	"../src/Fl_Font.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_device.h
+	<FL/x.H>
+	<FL/Fl_Plugin.H>
+	<FL/Fl_Image.H>
+	<FL/Fl_Bitmap.H>
+	<FL/Fl_Pixmap.H>
+	<FL/Fl_RGB_Image.H>
+	<stdlib.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_plugin.h
+	"Fl_Preferences.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_preferences.h
+	<stdio.h>
+	"Fl_Export.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_pixmap.h
+	"Fl_Image.H"
+	"x.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_rgb_image.h
+	"Fl_Image.H"
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\point.h
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\std_lib_facilities.h
+	<cmath>
+	<cstring>
+	<fstream>
+	<stdexcept>
+	<string>
+	<sstream>
+	<vector>
+
+1600858718 source:e:\c++\problem solving and practice\week9\hw3\gui.cpp
+	<FL/Fl.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Output.H>
+	"GUI.h"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl.h
+	<FL/Fl_Export.H>
+	<FL/Fl_Cairo.H>
+	"fl_utf8.h"
+	"Enumerations.H"
+	<stdio.h>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_cairo.h
+	<FL/Fl_Export.H>
+	<cairo.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_utf8.h
+	"Fl_Export.H"
+	"fl_types.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<locale.h>
+	<ctype.h>
+	<wchar.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<X11/Xlocale.h>
+	<X11/Xlib.h>
+	<locale.h>
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_button.h
+	"Fl_Widget.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_output.h
+	"Fl_Input.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_input.h
+	"Fl_Input_.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_input_.h
+	"Fl_Widget.H"
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\gui.h
+	"Window.h"
+	"Graph.h"
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\window.h
+	<string>
+	<vector>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	"Point.h"
+
+1604418514 source:e:\c++\problem solving and practice\week9\hw3\main.cpp
+	"Simple_window.h"
+	"Graph.h"
+	"Binary_tree.h"
+	"TriangleBinary_tree.h"
+	"std_lib_facilities.h"
+	<iostream>
+
+1600858718 e:\c++\problem solving and practice\week9\hw3\simple_window.h
+	"GUI.h"
+	"Graph.h"
+
+1604418750 e:\c++\problem solving and practice\week9\hw3\trianglebinary_tree.h
+	"Binary_tree.h"
+
+1600858718 source:e:\c++\problem solving and practice\week9\hw3\simple_window.cpp
+	"Simple_window.h"
+
+1604418513 source:e:\c++\problem solving and practice\week9\hw3\trianglebinary_tree.cpp
+	"TriangleBinary_tree.h"
+
+1600858718 source:e:\c++\problem solving and practice\week9\hw3\window.cpp
+	"Window.h"
+	"Graph.h"
+	"GUI.h"
+
+1604419998 source:e:\c++\problem solving and practice\week9\hw3\graph.cpp
+	<FL/Fl_GIF_Image.H>
+	<FL/Fl_JPEG_Image.H>
+	"Graph.h"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_gif_image.h
+	"Fl_Pixmap.H"
+
+1551602423 e:\c++\fltk\mingw\include\fl\fl_jpeg_image.h
+	"Fl_Image.H"
+

@@ -1,0 +1,155 @@
+Q1="""
+SELECT * FROM course
+where dept_name in ("Biology","Physics");
+"""
+
+Q2="""
+SELECT name,dept_name,salary FROM instructor
+WHERE dept_name != "Statistics" AND salary < 70000
+ORDER BY salary DESC;
+"""
+
+Q3="""
+SELECT ID,name,dept_name FROM student
+WHERE (name like "A%" OR name like "%e")
+AND dept_name in ("Statistics","History");
+"""
+
+Q4="""
+SELECT takes.course_id as course_id, takes.semester as semester, takes.grade as grade
+FROM takes,student
+WHERE student.name="Ma" AND student.ID = takes.ID
+AND takes.year = 2002;
+"""
+
+Q5="""
+SELECT teaches.year as year,teaches.semester as semester,course.title as title
+FROM instructor,teaches,course
+WHERE instructor.name="Mingoz" AND instructor.ID=teaches.ID
+AND teaches.course_id=course.course_id AND teaches.year > 2002
+ORDER BY teaches.year ASC;
+"""
+
+Q6="""
+SELECT DISTINCT(instructor.ID) as ID,instructor.name as name
+FROM instructor,section,teaches
+WHERE section.building="Taylor" 
+AND teaches.sec_id=section.sec_id
+AND teaches.course_id=section.course_id
+AND teaches.ID=instructor.ID
+ORDER BY instructor.ID ASC;
+"""
+
+Q7="""
+SELECT * FROM student
+WHERE tot_cred BETWEEN 110 AND 120
+AND NOT EXISTS(
+	SELECT * FROM takes
+	WHERE takes.ID=student.ID AND grade="C-"
+);
+"""
+
+Q8="""
+SELECT course.* 
+FROM course LEFT OUTER JOIN prereq USING (course_id)
+WHERE prereq_id is NULL;
+"""
+
+Q9="""
+SELECT count(DISTINCT(course_id))
+FROM section
+WHERE year BETWEEN 2004 AND 2006;
+"""
+
+Q10="""
+SELECT section.course_id, section.year, section.semester, section.sec_id, time_slot.day
+FROM teaches,section,instructor,time_slot
+WHERE instructor.name="Mingoz" AND instructor.ID=teaches.ID
+AND teaches.sec_id=section.sec_id AND teaches.course_id=section.course_id
+AND section.time_slot_id=time_slot.time_slot_id;
+"""
+
+Q11="""
+SELECT * FROM student
+WHERE dept_name="Biology"
+AND tot_cred in (
+	SELECT min(tot_cred) FROM student
+	WHERE dept_name="Biology"
+);
+"""
+
+Q12="""
+SELECT student.* 
+FROM student LEFT OUTER JOIN takes USING (ID)
+GROUP BY student.ID
+HAVING count(DISTINCT(course_id))<8;
+"""
+
+Q13="""
+SELECT instructor.name, student.ID, student.name
+FROM instructor,student,advisor,advisor as advisor1
+WHERE instructor.ID=advisor1.i_ID AND advisor1.s_ID=645
+AND advisor.i_ID=advisor1.i_ID
+AND advisor.s_ID=student.ID;
+"""
+
+Q14="""
+SELECT student.ID, student.name, takes.year, COUNT(*)
+FROM student LEFT OUTER JOIN takes USING (ID)
+GROUP BY student.ID, takes.year
+ORDER BY student.ID, student.name, takes.year ASC;
+"""
+
+Q15="""
+SELECT instructor.dept_name,instructor.ID,instructor.name,count(teaches.course_id) as total
+FROM instructor LEFT OUTER JOIN teaches USING (ID)
+GROUP BY instructor.dept_name,instructor.ID,instructor.name
+HAVING count(teaches.course_id)>4
+ORDER BY instructor.dept_name,instructor.ID,instructor.name DESC;
+"""
+
+Q16="""
+INSERT INTO takes (ID,course_id,sec_id,semester,year)
+VALUES
+(12138,737,1,"Spring",2022);
+"""
+
+Q17="""
+UPDATE advisor
+SET i_ID=(
+	SELECT ID FROM instructor 
+	WHERE name="Yin"
+)
+WHERE i_ID=(
+	SELECT ID FROM instructor 
+	WHERE name="Sakurai"
+);
+"""
+
+Q18="""
+CREATE VIEW si AS
+SELECT student.ID as student_ID,student.name as student_name,student.dept_name student_dept_name,instructor.ID as instructor_ID,instructor.name instructor_name
+FROM student,instructor,advisor
+WHERE advisor.s_ID=student.ID AND advisor.i_ID=instructor.ID;
+"""
+
+Q19="""
+SELECT ID,name,tot_cred
+FROM student
+WHERE dept_name="Statistics"
+AND tot_cred > (
+	SELECT tot_cred FROM student
+	WHERE name="Reuter"
+)
+ORDER BY tot_cred DESC;
+"""
+
+Q20="""
+SELECT student.ID as `student.ID`,student.name as `student.name`,year as `takes.year`,grade as `takes.grade`
+FROM student LEFT OUTER JOIN (
+	SELECT * FROM takes
+	WHERE takes.course_id=400
+)
+USING (ID)
+WHERE student.dept_name="Psychology";
+"""

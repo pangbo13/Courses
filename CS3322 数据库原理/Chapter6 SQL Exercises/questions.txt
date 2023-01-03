@@ -1,0 +1,141 @@
+Note: you must answer every question a single SQL statement.
+注意：每道题目必须使用一条单独的语句完成，不允许连续使用多条语句。
+
+1. List all courses in the Department of Biology and Department of Physics.
+列出生物系(Biology)和物理系(Physics)的所有课程信息(course.*)。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+course_id|title|dept_name|credits
+
+
+2. List name,dept_name and salary of instructors who are not in the Statistics department and whose salary is less than 70000.
+Sort the results according to the salary column in descending order.
+列出所有非统计系(Statistics)的、工资(salary)小于70000的老师(instructor)的name、dept_name、salary信息，
+结果根据salary列降序排序。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+name|dept_name|salary
+
+3. List ID, name, dept_name of students whose name starts with an 'A' or ends with an 'e', and who are in the Department of statistics or Department of History.
+列出首字母为A或尾字母为e、并且在统计系(Statistics)或者历史系(History)的所有学生(student)的ID、name、dept_name信息。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|dept_name
+
+4. List takes.course_id, takes.semester, and takes.grade of the student named Ma in the 2002 year.
+列出“Ma”同学(student.name='Ma')在2002年(takes.year)修读的所有课程(takes)的课程号、学期、成绩信息，
+也即takes.course_id, takes.semester, takes.grade三列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+course_id|semester|grade
+
+5. List teaches.year, teaches.semester, and course.title of courses that the instructor Mingoz teaches after 2002.
+Sort the results according to year(teaches) in ascending order.
+列出Mingoz老师(instructor.name='Mingoz')在2002年(不含)以后教授的所有课程的年份、学期、课程名称信息，
+也即teaches.year、teaches.semester、course.title三列。
+查询结果按照teaches.year列升序排列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+year|semester|title
+
+6. List ID, name of instructors who has ever taught(teaches) at least one course in the Taylor building.
+Sort the results according to student.ID;
+列出所有曾在Taylor楼(section.building='Taylor')教过课(teaches)的老师(instructor)的职工号、姓名信息，
+也即ID、name两列。
+查询结果根据ID列升序排序。      
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name
+
+
+7. List students whose tot_cred is between 110 and 120 and who have never got grade 'C-'.
+列出总学分(student.tot_cred)在110和120之间(闭区间[110,120])，并且课程成绩(takes.grade)从来没有'C-'的学生信息(student.*)，
+也即student表的全部列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|dept_name|tot_cred
+
+8. List all courses that have no prereqs.
+列出没有任何前置课程(prereq)的所有课程信息(course.*)，
+也即course表的全部列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+course_id|title|dept_name|credits
+
+9. Display the count of courses (distinguished by section.course_id)  between 2004 and 2006.  
+列出2004~2006年(section.year)开设的课程数量(由section.course_id区分)数量。
+注：是2004-2006年的总数量，不是每一年的数量
+
+10. List section.course_id,section.year,section.semester,section.sec_id, and time_slot.day of courses that teached by Mingoz(instructor.name='Mingoz').
+列出Mingoz老师(instructor.name)教过的(teaches)课程的课程ID、年份、学期、section ID、上课时间,
+也即section.course_id, section.year, section.semester, section.sec_id, time_slot.day五列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+course_id|year|semester|sec_id|day
+
+11. List students in the Department of Biology who have the minimum tot_cred value.
+列出生物系(student.dept_name='Biology')总学分(student.tot_cred)最低的所有学生的信息(*)。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|dept_name|tot_cred
+
+12. List students who have ever taken less than 8 different courses (distinguished by takes.course_id).
+列出所有修读课程(由takes.course_id区分)小于8门的学生信息(student.*)。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|dept_name|tot_cred
+
+13. List instructor.name, student.ID, student.name of students advised by the instructor of the student whose ID is 645.
+列出学号(student.ID)为645的学生的导师姓名(instructor.name)和其导师的所有学生的学号(student.ID)、姓名(student.name)信息,
+也即 instructor.name, student.ID, student.name 三列。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+name|ID|name
+
+14. List the count of sections that students take(takes.*) grouped by student.ID, student.name, takes.year.
+Sort the results by student.ID, student.name, takes.year in ascending order.
+按学生学号(student.ID)、学生姓名(student.name)、选课年份(takes.year)
+对选课(takes)情况进行分类汇总，统计每个学生在每年的选课数量(count)。
+结果按student.ID, student.name, takes.year进行升序排序。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|year|COUNT(*)
+
+15. List the total count of sections that instructors teach(teaches.*) grouped by instructor.dept_name, instructor.ID, instructor.name 
+and only show items having section total count > 4.
+Sort the results by instructor.dept_name,instructor.ID,instructor.name in descending order.
+按系(instructor.dept_name)、老师工号(instructor.ID)、老师姓名(instuctor.name)对教学(teaches)情况进行分类汇总，
+统计各系各老师的开课数量(count)，并筛选出其中开课总数量大于4的信息。
+结果按instructor.dept_name,instructor.ID,instructor.name进行降序排序。      
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+dept_name|ID|name|total
+
+16. A student whose ID is 12138 takes a section(course_id=737,sec_id=1) in the Spring semester of 2022.
+Insert a record into the takes table to record this information.
+根据某一个学生新选修一门课程的情形在takes表中插入相应记录:
+ID为12138的学生在2022年春季学期选修了course_id为737, sec_id为1的课程。
+
+
+17. Update the instructor to Yin for Sakurai's students in the advisor table. 
+Sakurai老师从学校离职，他的学生现在由Yin老师指导。
+在advisor表中将Sakurai的所有学生的导师更新为Yin，以反映此信息。
+
+
+18. Create a view named si for students and their instructors.
+Result columns must be renamed as: student_ID, student_name, student_dept_name, instructor_ID, instructor_name. 
+创建一个名为si的视图，结果需要包含所有学生和其导师，也即学生学号、学生姓名、学生院系、导师工号、导师姓名5项信息。
+注意，结果列必须按顺序命名为：student_ID, student_name, student_dept_name, instructor_ID, instructor_name。
+
+
+19. List the student ID, name, and tot_cred of students who have a greater tot_cred value than Reuter. Sort the result by tot_cred in descending order.
+列出统计专业（Statistics）修的总学分数（tot_cred）比Reuter同学（student）多的学生的学号（ID）、姓名（name）、总学分（tot_cred），并按照总学分（tot_cred）降序排列
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+ID|name|tot_cred
+
+20. List the student.ID, student.name of the students in the Psychology department, and takes.year, takes.grade  of the students who have taken the course with takes.course_id=400. List the information of the students who have not taken the course.
+列出心理学系（Psychology）所有学生的学号（student.ID）、姓名（student.name）以及选修课程400号（takes.course_id）的年份（takes.year）和成绩（takes.grade），没有选修的同学也要列出来。
+
+Output Header Example (enabling the option `.header on` in sqlite3):
+student.ID|student.name|takes.year|takes.grade

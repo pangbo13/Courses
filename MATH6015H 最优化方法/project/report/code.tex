@@ -1,0 +1,165 @@
+\subsection*{lbfgs.py}
+\begin{lstlisting}[language=python,numbers=left]
+import torch
+from collections import deque
+
+class LBFGS():
+    def __init__(self, params, lr = 0.01 , max_iter=100, 
+            memory_size=10, line_search_fn=None):
+        self.max_iter = max_iter
+        self.memory_size = memory_size
+        self.line_search_fn = line_search_fn
+        self.s = deque(maxlen=memory_size)
+        self.y = deque(maxlen=memory_size)
+        self.rho = deque(maxlen=memory_size)
+        self._params = list(params)
+        self.last_s = None
+        self.last_grad = None
+        self.lr = lr
+    
+    def update_memory(self, s, y):
+        ys = torch.dot(y, s)
+        if ys > 1e-10:
+            self.s.append(s)
+            self.y.append(y)
+            self.rho.append(1. / ys)
+    
+    @torch.no_grad()
+    def compute_direction(self, grad):
+        y = self.y[-1]
+        s = self.s[-1]
+        ys = torch.dot(y, s)
+        q = grad.clone()
+        alpha = []
+        for s, y, rho in zip(reversed(self.s), reversed(self.y), reversed(self.rho)):
+            alpha_i = rho * torch.dot(s, q)
+            q.add_(y, alpha=-alpha_i)
+            alpha.append(alpha_i)
+
+        H_diag = ys / y.dot(y)
+        r = torch.mul(q, H_diag)
+        for s, y, rho, alpha_i in zip(self.s, self.y, self.rho, reversed(alpha)):
+            beta = rho * torch.dot(y, r)
+            r.add_(s, alpha=alpha_i - beta)
+        return -r
+    
+    def zero_grad(self):
+        for p in self._params:
+            if p.grad is not None:
+                p.grad.detach_()
+                p.grad.zero_()
+
+    def _gather_flat_grad(self):
+        views = []
+        for p in self._params:
+            if p.grad is None:
+                view = p.new(p.numel()).zero_()
+            elif p.grad.is_sparse:
+                view = p.grad.to_dense().view(-1)
+            else:
+                view = p.grad.view(-1)
+            views.append(view)
+        return torch.cat(views, 0)
+    
+    def _add_grad(self, step_size, update):
+        offset = 0
+        for p in self._params:
+            numel = p.numel()
+            p.add_(update[offset:offset + numel].view_as(p), alpha=step_size)
+            offset += numel
+        assert offset == self._gather_flat_grad().numel()
+
+    @torch.no_grad()
+    def step(self, closure = None):
+        loss = None
+        if closure is not None:
+            closure = torch.enable_grad()(closure)
+            loss = closure()
+            loss = loss.item()
+        grad = self._gather_flat_grad()
+        if grad is None:
+            raise ValueError("Function must compute gradients.")
+        if self.last_grad is not None and self.last_s is not None:
+            self.update_memory(self.last_s, grad - self.last_grad)
+            self.last_grad = None
+            self.last_s = None
+        if len(self.s) > 0:
+            p = self.compute_direction(grad)
+        else:
+            p = -grad
+        alpha = self.lr
+        s = alpha * p
+        self._add_grad(alpha, p)
+        
+        self.last_s = s
+        self.last_grad = grad.clone()
+
+        return loss
+\end{lstlisting}
+
+
+\subsection*{train.py}
+\begin{lstlisting}[language=python,numbers=left]
+import torch
+from torchvision import datasets, transforms
+import torch.nn as nn
+import numpy as np
+from lbfgs import LBFGS
+
+class SimpleCNN(nn.Module):
+    def __init__(self):
+        super(SimpleCNN, self).__init__()
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=3, stride=1, padding=1)
+        self.relu1 = nn.ReLU()
+        self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=1, padding=1)
+        self.relu2 = nn.ReLU()
+        self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.fc1 = nn.Linear(7 * 7 * 32, 128)
+        self.relu3 = nn.ReLU()
+        self.fc2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.relu1(x)
+        x = self.pool1(x)
+        x = self.conv2(x)
+        x = self.relu2(x)
+        x = self.pool2(x)
+        x = x.view(-1, 7 * 7 * 32)
+        x = self.fc1(x)
+        x = self.relu3(x)
+        x = self.fc2(x)
+        return x
+
+
+root = "~/data/MNIST"
+
+# load the dataset and pre-process
+transform=transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.1307,), (0.3081,))
+    ])
+train_dataset = datasets.MNIST(root, train=True, transform=transform)
+
+
+model = SimpleCNN()
+model.cuda()
+dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=128)
+criterion = nn.CrossEntropyLoss()
+optimizer = LBFGS(model.parameters(), lr=0.01)
+loss_list = []
+for epoch in range(4):
+    for batch_idx, (x, target) in enumerate(dataloader):
+        x = x.cuda()
+        target = target.cuda()
+        def closure():
+            optimizer.zero_grad()
+            output = model(x)
+            loss = criterion(output, target)
+            loss.backward()
+            return loss
+        for i in range(10):
+            loss = optimizer.step(closure)
+            loss_list.append(loss)
+\end{lstlisting}
